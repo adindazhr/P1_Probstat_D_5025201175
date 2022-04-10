@@ -1,11 +1,13 @@
 # Praktikum 1 Probstat
 
-Adinda Zahra Pamuji (5025201175)
+*Nama : Adinda Zahra Pamuji*
+
+*NRP  : 5025201175*
 
 #### 1 Seorang penyurvei secara acak memilih orang-orang di jalan sampai dia bertemu dengan seseorang yang menghadiri acara vaksinasi sebelumnya.
 #### a. Berapa peluang penyurvei bertemu x = 3 orang yang tidak menghadiri acara vaksinasi sebelum keberhasilan pertama ketika p = 0,20 dari populasi menghadiri acara vaksinasi? (distribusi Geometrik)
 
-```
+```r
 dgeom(x=3, prob=0.2)
 ```
 Fungsi dgeom menemukan probabilitas kesuksesan pertama setelah mengalami sejumlah kegagalan. Pada kasus ini kesuksesan pertama setelah 3 kali kegagalan dengan probabilitas 0.2
@@ -14,7 +16,7 @@ Fungsi dgeom menemukan probabilitas kesuksesan pertama setelah mengalami sejumla
 
 #### b. mean Distribusi Geometrik dengan 10000 data random , prob = 0,20 dimana distribusi geometrik acak tersebut X = 3 ( distribusi geometrik acak () == 3 )
 
-```
+```r
 mean(rgeom(n = 10000, prob = 0.2) == 3)
 ```
 Fungsi rgeom menghasilkan list nilai acak yang mewakili jumlah kegagalan sebelum keberhasilan pertama. Pada kasus ini, kita generate 1000 data random lalu dicari meannya
@@ -24,14 +26,14 @@ Fungsi rgeom menghasilkan list nilai acak yang mewakili jumlah kegagalan sebelum
 
 #### c. Bandingkan Hasil poin a dan b , apa kesimpulan yang bisa didapatkan?
 
-```
+```r
 sprintf("Jika di run, maka 1a akan menghasilkan 0.1024. Sedangkan, 1b jika saya run maka akan menghasilkan 0.1023.")
 sprintf("Hal ini menunjukkan bahwa walaupun kedua hasil tersebut tidak sama persis, tetapi bisa disimpulkan bahwa simulasi dan teori sejalan")
 ```
 
 #### d. Histogram Distribusi Geometrik , Peluang X = 3 gagal Sebelum Sukses Pertama
 
-```
+```r
 hist(rgeom(n = 10000, prob = 0.2),labels=T, breaks="Scott")
 ```
 Menunjukkan histogram distribusi geometrik 10000 data random dengan probabilitas 0.2
@@ -39,7 +41,7 @@ Menunjukkan histogram distribusi geometrik 10000 data random dengan probabilitas
 ![image](https://user-images.githubusercontent.com/89954689/162612893-754a7602-2407-40b5-b899-769edeedb043.png)
 
 #### e. Nilai Rataan (μ) dan Varian (σ²) dari Distribusi Geometrik
-```
+```r
 rataan_geom = 1/0.2
 rataan_geom
 varian_geom = (1-0.2)/0.2*0.2
@@ -51,7 +53,7 @@ Rumus rataan geometry adalah 1/p sedangkan rumus varian geometri adalah (1-p)/p*
 
 #### 2 Terdapat 20 pasien menderita Covid19 dengan peluang sembuh sebesar 0.2. Tentukan :
 #### a. Peluang terdapat 4 pasien yang sembuh.
-```
+```r
 p = dbinom(4,size=20,prob=0.2)
 p
 ```
@@ -60,7 +62,7 @@ Fungsi dbinom mengembalikan nilai peluang dari suatu distribusi binomial. Pada k
 ![image](https://user-images.githubusercontent.com/89954689/162613172-ba5fb4a3-9b4e-4de1-be45-bc06296572cb.png)
 
 #### b. Gambarkan grafik histogram berdasarkan kasus tersebut
-```
+```r
 plot(0:20, dbinom(0:20, size=20, prob=0.2),type='h')
 ```
 Menggambarkan histogram dari 20 pasien dengan peluang sembuh 0.2
@@ -68,7 +70,7 @@ Menggambarkan histogram dari 20 pasien dengan peluang sembuh 0.2
 ![image](https://user-images.githubusercontent.com/89954689/162613513-aa4c36bc-46f4-42d7-a9de-f682f5420c3a.png)
 
 #### c. Nilai Rataan (μ) dan Varian (σ²) dari Distribusi Binomial
-```
+```r
 n_binom = 4
 p_binom = 0.2
 rataan_binom = n_binom * p_binom
@@ -82,7 +84,7 @@ Rumus rataan binomial adalah np sedangkan rumus varian binomial adalah rataan bi
 
 #### 3 Diketahui data dari sebuah tempat bersalin di rumah sakit tertentu menunjukkan rata-rata historis 4,5 bayi lahir di rumah sakit ini setiap hari. (gunakan Distribusi Poisson)
 #### a. Berapa peluang bahwa 6 bayi akan lahir di rumah sakit ini besok
-```
+```r
 dpois(6, 4.5)
 ```
 Fungsi dpois menemukan probabilitas keberhasilan terjadi berdasarkan tingkat keberhasilan rata-rata. Pada kasus ini peluang 6 bayi lahir dengan rata rata 4.5 bayi lahir setiap harinya
@@ -90,7 +92,7 @@ Fungsi dpois menemukan probabilitas keberhasilan terjadi berdasarkan tingkat keb
 ![image](https://user-images.githubusercontent.com/89954689/162613794-a9dab8dc-bd86-477f-b7a7-cc85ffe70ff6.png)
 
 #### b. Simulasikan dan buatlah histogram kelahiran 6 bayi akan lahir di rumah sakit ini selama setahun (n = 365)
-```
+```r
 hist(rpois(365, 4.5),breaks = "Scott",labels=T)
 ```
 Menurut histogram, kelahiran 6 bayi akan berjumlah sebanyak 47 kali selama setahun
@@ -99,7 +101,7 @@ Menurut histogram, kelahiran 6 bayi akan berjumlah sebanyak 47 kali selama setah
 
 #### c. dan bandingkan hasil poin a dan b , Apa kesimpulan yang bisa didapatkan
 
-```
+```r
 sprintf("Hasil dari a adalah 0.1281201, sedangkan hasil dari b adalah 48.")
 sprintf("Jika kita kalikan hasil a dengan 365, maka hasilnya adalah %f", 0.1281201*365)
 sprintf("Walaupun tidak sama persis, tetapi dapat disimpulkan bahwa simulasi dan teori sejalan")
@@ -107,7 +109,7 @@ sprintf("Walaupun tidak sama persis, tetapi dapat disimpulkan bahwa simulasi dan
 
 #### d. Nilai Rataan (μ) dan Varian (σ²) dari Distribusi Poisson
 
-```
+```r
 rataan_poisson = 4.5
 varian_poisson = 4.5
 rataan_poisson
@@ -120,7 +122,7 @@ Rataan distribusi poisson akan bernilai sama dengan lambda nya
 #### Diketahui nilai x = 2 dan v = 10. Tentukan
 #### a. Fungsi Probabilitas dari Distribusi Chi-Square
 
-```
+```r
 q_chi=2
 df_chi=10
 dchisq(q_chi, df_chi, ncp = 0)
@@ -131,7 +133,7 @@ dchisq adalah fungsi untuk menghitung pribabilitas dari distribusi Chi-Square
 
 #### b. Histogram dari Distribusi Chi-Square dengan 100 data random
 
-```
+```r
 n_chi=100
 hist(rchisq(n_chi, df_chi, ncp = 0),labels=T)
 ```
@@ -141,7 +143,7 @@ Membuat histogram probabilitas dari 100 data random menggunakan distribusi Chi-S
 
 #### c. Nilai Rataan (μ) dan Varian (σ²) dari Distribusi Chi-Square
 
-```
+```r
 rataan_chi = df_chi
 varian_chi = df_chi*2
 rataan_chi
@@ -154,7 +156,7 @@ Rumus rataan dari Chi-Square adalah sama dengan v, sedangkan rumus varian adalah
 #### 5 Diketahui bilangan acak (random variable) berdistribusi exponential (λ = 3). Tentukan
 #### a Fungsi Probabilitas dari Distribusi Exponensial
 
-```
+```r
 dexp(3)
 ```
 dexp adalah fungsi untuk menghitung probabilitas dari distribusi Exponensial
@@ -163,7 +165,7 @@ dexp adalah fungsi untuk menghitung probabilitas dari distribusi Exponensial
 
 #### b Histogram dari Distribusi Exponensial untuk 10, 100, 1000 dan 10000 bilangan random
 
-```
+```r
 hist(rexp(n = 10, rate = 3),labels=T)
 hist(rexp(n = 100, rate = 3),labels=T)
 hist(rexp(n = 1000, rate = 3),labels=T)
@@ -178,7 +180,7 @@ Membuat histogram dengan 10,100,1000,10000 data random
 
 #### c Nilai Rataan (μ) dan Varian (σ²) dari Distribusi Exponensial
 
-```
+```r
 set.seed(1)
 lambda = 3     #rate parameter chosen for the simulations
 simnum <- 100
@@ -197,7 +199,7 @@ Mencari mean dan varian dari 100 data random
 #### 6 Diketahui generate random nilai sebanyak 100 data, mean = 50, sd = 8. Tentukan
 #### a Fungsi Probabilitas dari Distribusi Normal P(X1 ??? x ??? X2), hitung Z-Score Nya dan plot data generate randomnya dalam bentuk grafik.
 
-```
+```r
 data_norm <- rnorm(100, 50, 8)
 median_norm <- median(data_norm)
 dnorm(median_norm, mean = 50, sd = 8)
@@ -210,7 +212,7 @@ Memasukkan 100 data random ke dalam variabel data_norm. Lalu, dicari mediannya. 
 
 #### b Generate Histogram dari Distribusi Normal dengan breaks 50 dan format penamaan:NRP_Nama_Probstat_{Nama Kelas}_DNhistogram
 
-```
+```r
 library(rcompanion)
 plotNormalHistogram( data_norm, prob = FALSE,
                      main = "5025201175_Adinda Zahra Pamuji_Probstat_D_DNhistogram",
@@ -222,7 +224,7 @@ Disini kita akan menggunakan library rcompanion untuk mendapatkan fungsi plotNor
 
 #### c Nilai Rataan (μ) dan Varian (σ²) dari Distribusi Normal
 
-```
+```r
 mean(data_norm)
 var(c(data_norm))
 ```
