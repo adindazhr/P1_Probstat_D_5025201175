@@ -15,9 +15,9 @@ sprintf("Hal ini menunjukkan bahwa walaupun kedua hasil tersebut tidak sama pers
 
 #1d Histogram Distribusi Geometrik , Peluang X = 3 gagal Sebelum Sukses Pertama
 
-hist(rgeom(n = 10000, prob = 0.2),labels=T)
+hist(rgeom(n = 10000, prob = 0.2),labels=T, breaks="Scott")
 
-#1e Nilai Rataan (??) dan Varian (??²) dari Distribusi Geometrik
+#1e Nilai Rataan (??) dan Varian (??Â²) dari Distribusi Geometrik
 
 rataan_geom = 1/0.2
 rataan_geom
@@ -28,13 +28,14 @@ varian_geom
 #Tentukan Peluang terdapat 4 pasien yang sembuh.
 
 p = dbinom(4,size=20,prob=0.2)
+p
 
 #2b Gambarkan grafik histogram berdasarkan kasus tersebut
 
 x=0:20
 plot(0:20, dbinom(0:20, size=20, prob=0.2),type='h')
 
-#2c Nilai Rataan (??) dan Varian (??²) dari Distribusi Binomial
+#2c Nilai Rataan (??) dan Varian (??Â²) dari Distribusi Binomial
 
 n_binom = 4
 p_binom = 0.2
@@ -59,7 +60,7 @@ sprintf("Hasil dari a adalah 0.1281201, sedangkan hasil dari b adalah 48.")
 sprintf("Jika kita kalikan hasil a dengan 365, maka hasilnya adalah %f", 0.1281201*365)
 sprintf("Walaupun tidak sama persis, tetapi dapat disimpulkan bahwa simulasi dan teori sejalan")
 
-#3d Nilai Rataan (??) dan Varian ( ??² ) dari Distribusi Poisson
+#3d Nilai Rataan (??) dan Varian ( ??Â² ) dari Distribusi Poisson
 
 rataan_poisson = 4.5
 varian_poisson = 4.5
@@ -70,14 +71,13 @@ varian_poisson
 
 q_chi=2
 df_chi=10
-pchisq(q_chi, df_chi, ncp = 0, lower.tail = TRUE, log.p = FALSE)
-
+dchisq(q_chi, df_chi, ncp = 0)
 #4b Histogram dari Distribusi Chi-Square dengan 100 data random
 
 n_chi=100
 hist(rchisq(n_chi, df_chi, ncp = 0),labels=T)
 
-#4c Nilai Rataan (??) dan Varian ( ??² ) dari Distribusi Chi-Square
+#4c Nilai Rataan (??) dan Varian ( ??Â² ) dari Distribusi Chi-Square
 
 rataan_chi = df_chi
 varian_chi = df_chi*2
@@ -96,7 +96,7 @@ hist(rexp(n = 100, rate = 3),labels=T)
 hist(rexp(n = 1000, rate = 3),labels=T)
 hist(rexp(n = 10000, rate = 3),labels=T)
 
-#5c Nilai Rataan (??) dan Varian ( ??² ) dari Distribusi Exponensial untuk n = 100 dan ?? = 3
+#5c Nilai Rataan (??) dan Varian ( ??Â² ) dari Distribusi Exponensial untuk n = 100 dan ?? = 3
 
 set.seed(1)
 lambda = 3     #rate parameter chosen for the simulations
@@ -114,7 +114,7 @@ sim_var
 
 data_norm <- rnorm(100, 50, 8)
 median_norm <- median(data_norm)
-pnorm(median_norm, mean = 50, sd = 8, lower.tail = TRUE, log.p = FALSE)
+dnorm(median_norm, mean = 50, sd = 8)
 z_scores <- (data_norm-mean(data_norm))/sd(data_norm)
 plot(data_norm,type = "o")
 
@@ -126,6 +126,7 @@ plotNormalHistogram( data_norm, prob = FALSE,
                      main = "5025201175_Adinda Zahra Pamuji_Probstat_D_DNhistogram",
                      breaks=50 )
 
-#6c Nilai Varian ( ??² ) dari hasil generate random nilai Distribusi Normal
+#6c Nilai Varian ( ??Â² ) dari hasil generate random nilai Distribusi Normal
 
+mean(data_norm)
 var(c(data_norm))
